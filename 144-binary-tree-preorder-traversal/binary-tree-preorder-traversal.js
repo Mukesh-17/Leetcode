@@ -11,6 +11,23 @@
  * @return {number[]}
  */
 
+//Reursive Approach
+var preorderTraversal = function(root) {
+    
+    const ans=[]
+    
+    const preTraverse=(node)=>{
+        if(!node) return;
+        ans.push(node.val);
+        preTraverse(node.left);
+        preTraverse(node.right); 
+    };
+    preTraverse(root);
+    return ans;
+};
+
+
+
  //Iterative Approach
 var preorderTraversal = function(root) {
     if(!root) return [];
