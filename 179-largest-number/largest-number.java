@@ -1,34 +1,16 @@
-class Solution{
+class Solution {
+    public String largestNumber(int[] nums) {
+          String[] s = new String[nums.length];
 
-    public String largestNumber(int nums[]){
-
-        //Convert int values to String
-        String str[] = new String[nums.length];
-        for(int i=0; i<nums.length; i++){
-            str[i] = String.valueOf(nums[i]);
+        for (int i = 0; i < nums.length; i++) {
+            s[i] = String.valueOf(nums[i]);
         }
-
-        //Sort the strings as per custom comparator
-
-        Arrays.sort(str,(a,b)->{
-
-            String s1=a+b;
-            String s2=b+a;
-            return s2.compareTo(s1);
-        }
-    );
-
-        //If the largest number is 0, return "0"
-        if(str[0].equals("0")){
-            return "0";
-        }
-
-        //Concatenate the sorted strings to form the largest number
+        Arrays.sort(s, (a, b) -> (b + a).compareTo(a + b));
         StringBuilder sb = new StringBuilder();
-        for(String s : str){
-            sb.append(s);
+        for (String str : s) {
+            sb.append(str);
         }
-
-        return sb.toString();
+        String result = sb.toString();
+        return result.startsWith("0") ? "0" : result;
     }
 }
